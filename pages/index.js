@@ -1,21 +1,20 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
-import Link from 'next/link'
-
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+export default function Home(props) {
   return (
-    <>
-<h1>Home Page</h1>
-<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-</p>
-<Link href='/About'>visit about page</Link>
-<Link href='/Blog'>visit blog page</Link>
-    </>
+    <div>
+      <h2>Welcome to our homepage.</h2>
+      <p>This is the best home page in the world. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum aspernatur illum architecto cumque recusandae fuga sequi necessitatibus deleniti repellat harum nobis, dolor veniam vero deserunt. Voluptatibus, ducimus deserunt. Recusandae, dolore.</p>
+      <p>The weather: {props.forecast}</p>
+    </div>
   )
 }
-~``
+
+export async function getServerSideProps() {
+  const response = await fetch("https://api.weather.gov/gridpoints/MFL/109,49/forecast")
+  const data = await response.json()
+
+  return {
+    props: {
+      forecast: data.properties.periods[0].detailedForecast
+    }
+  }
+}

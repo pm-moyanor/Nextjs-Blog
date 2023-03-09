@@ -1,17 +1,17 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
-import styles from "../../styles/post.module.css"
+import styles from "../../styles/Post.module.css"
 
 export default function Post(props) {
   const router = useRouter()
   return (
     <>
       <p>
-        <Link href="/blog">
+        <Link href="/Blog">
           <small>&laquo; back to all blog posts</small>
         </Link>
       </p>
-      <h2 className={styles.title}>{props.post.title}</h2>
+      <h2 >{props.post.title}</h2>
       <p>{props.post.content}</p>
       <button className={styles.button} onClick={() => router.push("/blog")}>
         Click me to programmatically navigate or redirect
@@ -20,7 +20,7 @@ export default function Post(props) {
   )
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths() {//loop throw the array from the urls static generated files
   const response = await fetch("https://learnwebcode.github.io/json-example/posts.json")
   const data = await response.json()
 
