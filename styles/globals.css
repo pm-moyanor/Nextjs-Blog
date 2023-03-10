@@ -17,10 +17,22 @@ body {
   list-style: none;
 }
 
+body{
+  background-color: #222;
+  color: white;
+}
+
+.header-nav{
+font-size: 52px;
+}
 .header-nav a {
   color: #a7a7a7;
   margin-right: 10px;
   font-size: 0.9rem;
+
+}
+.header-nav :hover{
+  cursor: x;
 }
 
 .header-nav a.active {
@@ -34,3 +46,5 @@ body {
   color: #999;
   font-size: 0.75rem;
 }
+
+
