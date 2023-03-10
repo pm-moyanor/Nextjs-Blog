@@ -1,4 +1,6 @@
 import "../styles/globals.css";
+import Image from "next/image";
+
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -7,7 +9,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter;
   return (
     <>
-      <div>
+      <div className="app__header">
         <h1>Site</h1>
         <nav className="header-nav">
           <ul>
